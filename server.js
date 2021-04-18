@@ -12,8 +12,8 @@ app.use(express.static("public"));
 
 // const db = require("./models");
 
-require("./routes/api")
-// require("./routes/html")(app)
+require("./routes/api")(app)
+require("./routes/html")(app)
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
