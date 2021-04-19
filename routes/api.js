@@ -23,29 +23,28 @@ app.get("/api/workouts/range", (req, res) => {
 
 // ====================================================
 // Version 1
-  app.post("/api/workouts", (req, res) => {
-        Workout.create({})
-          .then(data => {
-            res.json(data)
-          })
-          .catch(err => {
-            res.json(err)
-          });
-          console.log(data)
-        })
+app.post('/api/workouts', (req, res) => {
+  Workout.create({})
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
 
   // // Version 2
-  //       app.post("/api/workouts", ({body}, res) => {
-  //         const workout = new Workout(body);
+        // app.post("/api/workouts", ({body}, res) => {
+        //   const workout = new Workout(body);
         
-  //         Workout.create(workout)
-  //           .then(dbworkout => {
-  //             res.json(dbworkout);
-  //           })
-  //           .catch(err => {
-  //             res.json(err);
-  //           });
-  //       });
+        //   Workout.create(workout)
+        //     .then(dbworkout => {
+        //       res.json(dbworkout);
+        //     })
+        //     .catch(err => {
+        //       res.json(err);
+        //     });
+        // });
 // =====================================================
     app.put("api/workouts/:id", ({ body, params }, res) => {
         Workout.findByIdAndUpdate(
