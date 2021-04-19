@@ -21,16 +21,18 @@ app.get("/api/workouts/range", (req, res) => {
       });
     })
 
+// ====================================================
     app.post("/api/workouts", (req, res) => {
         Workout.create({})
           .then(data => {
-            res.json(data);
+            res.json(data)
           })
           .catch(err => {
-            res.status(400).json(err);
+            res.json(err)
           });
+          console.log(data)
         })
-
+// =====================================================
     app.put("api/workouts/:id", ({ body, params }, res) => {
         Workout.findByIdAndUpdate(
             params.id, 
