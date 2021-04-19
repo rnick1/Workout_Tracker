@@ -40,3 +40,23 @@ const workoutSchema = new Schema({
 const Workout = mongoose.model("Workout", workoutSchema);
 module.exports = Workout;
 
+// // From the Mongoose Documentation...possibly useful for the duration issue:
+
+// // const userSchema = mongoose.Schema({
+// //   email: String
+// // });
+// // Create a virtual property `domain` that's computed from `email`.
+
+// // ==============================================================
+// workoutSchema.virtual('totalDuration').get(function() {
+//   return this.exercises.reduce((total, exercise) => {
+//     return total + exercise.duration;
+//   }, 0);
+// });
+// // ==============================================================
+
+// // // JavaScript array method that might work:
+// // .reduce((accumulator, currentValue) => {
+// //   return accumulator + currentValue
+// // }, 10)
+
