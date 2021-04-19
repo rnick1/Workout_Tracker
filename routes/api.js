@@ -22,7 +22,8 @@ app.get("/api/workouts/range", (req, res) => {
     })
 
 // ====================================================
-    app.post("/api/workouts", (req, res) => {
+// Version 1
+  app.post("/api/workouts", (req, res) => {
         Workout.create({})
           .then(data => {
             res.json(data)
@@ -32,6 +33,19 @@ app.get("/api/workouts/range", (req, res) => {
           });
           console.log(data)
         })
+
+  // // Version 2
+  //       app.post("/api/workouts", ({body}, res) => {
+  //         const workout = new Workout(body);
+        
+  //         Workout.create(workout)
+  //           .then(dbworkout => {
+  //             res.json(dbworkout);
+  //           })
+  //           .catch(err => {
+  //             res.json(err);
+  //           });
+  //       });
 // =====================================================
     app.put("api/workouts/:id", ({ body, params }, res) => {
         Workout.findByIdAndUpdate(
