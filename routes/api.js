@@ -4,6 +4,7 @@ module.exports = function(app){
 app.get("/api/workouts", (req, res) => {
     Workout.find({})
       .then(data => {
+        console.log(data)
         res.json(data);
       })
       .catch(err => {

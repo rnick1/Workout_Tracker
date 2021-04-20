@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const opts = { toJSON: { virtuals: true } };
+
 const workoutSchema = new Schema({
   day: {
     type: Date,
@@ -35,12 +37,18 @@ const workoutSchema = new Schema({
   }
 }
   ],
+}, opts);
+
+workoutSchema.virtual('totalDuration').get(function() {
+  return this.exercises.reduce((total, exercise) => {
+    return total + exercise.duration;
+  }, 0);
 });
 
 const Workout = mongoose.model("Workout", workoutSchema);
 module.exports = Workout;
 
-// // From the Mongoose Documentation...possibly useful for the duration issue:
+// // From the Mongoose Documentation...possibly useful for the duration functionality:
 
 // // const userSchema = mongoose.Schema({
 // //   email: String
@@ -55,8 +63,8 @@ module.exports = Workout;
 // });
 // // ==============================================================
 
-// // // JavaScript array method that might work:
-// // .reduce((accumulator, currentValue) => {
-// //   return accumulator + currentValue
-// // }, 10)
+// // JavaScript array method that might work:
+// .reduce((accumulator, currentValue) => {
+//   return accumulator + currentValue
+// }, 10)
 
