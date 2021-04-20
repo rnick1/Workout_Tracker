@@ -12,7 +12,7 @@ app.get("/api/workouts", (req, res) => {
 })
 // Find a method that limits this search to a range.
 app.get("/api/workouts/range", (req, res) => {
-    Workout.find({})
+    Workout.find({}).limit(7)
       .then(data => {
         res.json(data);
       })
