@@ -10,8 +10,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// const db = require("./models");
-
 require("./routes/api")(app)
 require("./routes/html")(app)
 
